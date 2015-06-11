@@ -9,7 +9,7 @@ using System.Web;
 
 namespace ElvantoApi
 {
-    class ElvantoAPI
+    public class ElvantoAPI
     {
         const string API_URL = "https://api.elvanto.com/v1/";
         const string OAUTH_URL = "https://api.elvanto.com/oauth/";
@@ -147,7 +147,7 @@ namespace ElvantoApi
             }
         }
         /// <summary>
-        /// Call elvanto API endpoint with parameters
+        /// Call Elvanto API endpoint with parameters
         /// </summary>
         /// <param name="method">endpoint method like 'people/getAll'</param>
         /// <param name="json_parameters">json parameters for call method like '{"page": 1, "page_size": 100}' </param>

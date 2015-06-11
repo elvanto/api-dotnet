@@ -2,22 +2,20 @@
 
 This library is all set to go with version 1 of the <a href="https://www.elvanto.com/api/" target="_blank">Elvanto API</a>.
 
-
 ## Authenticating
 
 The Elvanto API supports authentication using either <a href="https://www.elvanto.com/api/getting-started/#oauth" target="_blank">OAuth 2</a> or an <a href="https://www.elvanto.com/api/getting-started/#api_key" target="_blank">API key</a>.
 
 ### What is This For?
 
-* Quick summary
-This is an API wrapper to use in conjunction with an Elvanto account. This wrapper can be used by developers to develop programs for their own churches, or to design integrations to share to other churches using OAuth authentication.
+* This is an API wrapper to use in conjunction with an Elvanto account. This wrapper can be used by developers to develop programs for their own churches, or to design integrations to share to other churches using OAuth authentication.
 * Version 1.0.0
 
 ### Installation
 
 #### Via Package Manager Console
 
-Enter the following command in the Package Manager Console
+Enter the following command in the Package Manager Console:
 
 ```
 Install-Package ElvantoAPI
@@ -25,7 +23,7 @@ Install-Package ElvantoAPI
 
 #### Via Nuget
 
-Enter the following command in command prompt
+Enter the following command in command prompt:
 
 ```
 nuget install ElvantoAPI
@@ -42,7 +40,7 @@ This will create a .DLL file for you to include in your projects.
 
 ### For Authentication using an API Key:
 
-First get your API key from Settings > Account Settings, then in the program:
+First get your API key from Settings > Account Settings, then in your code:
 
 ```csharp
 ElvantoAPI api = new ElvantoAPI(api_key);
@@ -50,7 +48,7 @@ ElvantoAPI api = new ElvantoAPI(api_key);
 
 ### For Authentication via OAuth
 
-Create an ElvantoAPI object
+Create an ElvantoAPI object:
 
 ```csharp
 ElvantoAPI api = new ElvantoAPI(client_id,client_secret);
@@ -70,7 +68,7 @@ You will then want to point your users to this URL. After they have logged in, t
 http://mywebapp.com/login/?code=string
 ```
 
-The next step is to take this code, and get your access tokens. The code here is the code in the above URL.
+The next step is to take this code, and retrieve your access tokens. The `code` parameter used below is the one returned in the query string of the above URL.
 
 ```csharp
 string json = api.GetTokens(code,redirect_uri);
@@ -102,8 +100,7 @@ string URL = api.AuthorizeUrl(redirect_uri,scope, isWebApp);
 
 Direct your users to this URL.
 
-After the user has logged in, they will be sent back to the specified redirect_uri, with a code. Unlike the WebApp method
-this code will be behind a hash.
+After the user has logged in, they will be sent back to the specified `redirect_uri`, with a code. Unlike the WebApp method this code will be behind a hash.
 
 ```csharp
 http://mynonwebapp.com/login/#code=string&expiresin=int
@@ -134,7 +131,7 @@ string json = jss.Serialize(new { firstname = "Test", preferred_name = "Test", l
 api.Call("people/create", json);
 ```
 
-An example `people/search` API call.
+An example `people/search` API call with it's returned result:
 
 ```csharp
 JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -212,9 +209,9 @@ api.Call("people/search", json);
 }
 ```
 
-### Refreshing Tokens (Oauth)
+### Refreshing Tokens (OAuth)
 
-Oauth tokens expire in time. As the response will throw an error when the tokens have expired, you can use the `.RefreshTokens()` to get new tokens as needed.
+OAuth tokens will expire. As the response will throw an error when the tokens have expired, you can use `.RefreshTokens()` to get generate tokens as needed.
 
 An example of how to do this, is as follows.
 
@@ -236,7 +233,6 @@ try
 	}
 }
 ```
-
 
 ## Documentation
 
