@@ -159,6 +159,7 @@ namespace ElvantoAPI
             WebRequest request = WebRequest.Create(url);
             request.Method = WebRequestMethods.Http.Post;
             request.ContentLength = bytes.Length;
+            request.ContentType = "application/json";
 
             //API Key authentication
             if (!this.oAuth)
@@ -173,7 +174,6 @@ namespace ElvantoAPI
             else
             {
                 request.Headers.Add("Authorization", "Bearer " + this.accessToken);
-                request.ContentType = "application/json";
             }
 
             using (Stream objStream = request.GetRequestStream())
